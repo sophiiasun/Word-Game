@@ -69,21 +69,25 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1625241190464">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1625257446204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625241190464" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1625241190464">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1625257446204" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1625257446204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625241190464" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1625241190464">
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1625257446204" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1625257446204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625241190464" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1625241190464">
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1625257446204" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1625257446204">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625241190464" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1625257446204" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1625250714041">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1625250714041" />
   </component>
 </project>
