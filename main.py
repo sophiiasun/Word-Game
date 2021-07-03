@@ -20,17 +20,6 @@ import enchant
 d = enchant.Dict("en_US")
 
 
-# word = input("test: ")
-# letters = "as"
-# if letters in word:
-#     if d.check(word):
-#         print("true")
-#     else:
-#         print("false")
-# else:
-#     print("false")
-
-
 class player:
     def __init__(self, name):
         self.lives = 3
@@ -39,6 +28,7 @@ class player:
         self.used = []
 
     def wordExist(self, letters, word):
+        word = word.lower()
         if letters in word:
             if (word in self.used) == False:
                 return d.check(word)
@@ -46,6 +36,7 @@ class player:
         return False
 
     def useWord(self, word):
+        word = word.lower()
         self.used.append(word)
         for character in range(0, len(word)):
             self.letters[ord(word[character]) - 97] = 1
@@ -57,4 +48,5 @@ class player:
         return True
 
 
+tmp = player("Jeffrey")
 
