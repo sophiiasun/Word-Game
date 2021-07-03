@@ -56,11 +56,11 @@ Think of a word with those letters (consecutively) in them and \ntype it in the 
 the timer runs out! Each player gets three lives. \n Win by being the only player remaining or by using all the letters\
 on the left. Have fun!", font="Courier 25", bg="seashell")
 img = displayLives(3)
-p1Lives = Label(window, width=180, image=img, anchor="center")
-p2Lives = Label(window, width=180, image=img, anchor="center")
+p1Lives = Label(window, width=180, image=img, bg="SlateGray1", anchor="center")
+p2Lives = Label(window, width=180, image=img, bg="SlateGray1", anchor="center")
 img2 = displayIcons()
-p1Icon = Label(window, width=250, image=img2[0], anchor="center")
-p2Icon = Label(window, width=250, image=img2[1], anchor="center")
+p1Icon = Label(window, width=250, image=img2[0], bg="SlateGray1", anchor="center")
+p2Icon = Label(window, width=250, image=img2[1], bg="SlateGray1", anchor="center")
 
 title.grid(row=1, column=1, columnspan=3, padx=(0, 10), pady=(0, 10))
 subtitle.grid(row=2, column=1, columnspan=3, padx=(0, 10), pady=(0, 10))
