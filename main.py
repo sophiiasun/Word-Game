@@ -16,9 +16,10 @@
 # if all players fail a prompt, the prompt changes
 
 import enchant
+from random_word import RandomWords
 
 d = enchant.Dict("en_US")
-
+r = RandomWords()
 
 class player:
     def __init__(self, name):
@@ -42,8 +43,8 @@ class player:
             self.letters[ord(word[character]) - 97] = 1
 
     def checkAllLetters(self):
-        for cnt in range(0, 26):
-            if self.letters[cnt] == 0:
+        for idx in range(0, 24):
+            if self.letters[idx] == 0:
                 return
         self.lives++
 
