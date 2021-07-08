@@ -7,7 +7,7 @@
 
 
 # logic / rules :
-# if all letters of alphabet are used then player wins
+# if all letters of alphabet are used then player gains a life
 # if player runs out of time player loses life
 # can't reuse words
 # 10 attempts
@@ -44,9 +44,14 @@ class player:
     def checkAllLetters(self):
         for cnt in range(0, 26):
             if self.letters[cnt] == 0:
-                return False
-        return True
+                return
+        self.lives++
+
+
 
 
 tmp = player("Jeffrey")
+tmp.useWord("abcdefghijklmnopqrstuvwxyz")
+tmp.checkAllLetters()
+print(tmp.lives)
 
