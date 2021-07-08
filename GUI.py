@@ -12,8 +12,8 @@ window = Tk()
 window.resizable(0, 0)
 window.config(padx=10, pady=10, bg="SlateGray1")
 
-LIVES_URL = ["https://i.ibb.co/h9gYVLq/Drawing-4.png", "https://i.ibb.co/d02Q6Nw/Drawing-3.png", "https://i.ibb.co/j6t62c5/Drawing-2.png",\
-             "https://i.ibb.co/qrkbDGT/Drawing-1.png"] # Order of lives: 0, 1, 2, 3
+LIVES_URL = ["https://i.ibb.co/RHw4WG2/die.png", "https://i.ibb.co/gwCDRrM/oneHeart.png", "https://i.ibb.co/Btc25cf/two-Hearts.png",\
+             "https://i.ibb.co/sFb9wx3/three-Hearts.png"] # Order of lives: 0, 1, 2, 3
 LIVES_PNG = ["die.png", "oneHeart.png", "twoHearts.png", "threeHearts.png"]
 ICONS_URL = ["https://i.ibb.co/pPRbw8q/OinkOink.png", "https://i.ibb.co/ggg6g8C/MooMoo.png", "https://i.ibb.co/K0H5J3H/BeeIcon.png", \
              "https://i.ibb.co/tHMckNz/BakBak.png", "https://i.ibb.co/b15XgKd/BarkBark.png"]
@@ -30,7 +30,7 @@ requestURLs()
 
 def displayLives(lives):
     img = Image.open(LIVES_PNG[lives])
-    img1 = img.resize((230, 100))
+    img1 = img.resize((120, 30))
     img2 = ImageTk.PhotoImage(img1)
     return img2
 
