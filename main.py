@@ -20,7 +20,7 @@ from random_word import RandomWords
 
 d = enchant.Dict("en_US")
 r = RandomWords()
-
+print(r)
 class player:
     def __init__(self, name):
         self.lives = 3
@@ -46,7 +46,7 @@ class player:
         for idx in range(0, 24):
             if self.letters[idx] == 0:
                 return
-        self.lives++
+        self.lives = self.lives + 1
 
 
 
