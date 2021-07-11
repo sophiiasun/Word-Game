@@ -16,11 +16,12 @@
 # if all players fail a prompt, the prompt changes
 
 import enchant
+import random
 from random_word import RandomWords
 
 d = enchant.Dict("en_US")
 r = RandomWords()
-print(r.get_random_word())
+
 class player:
     def __init__(self, name):
         self.lives = 3
@@ -48,9 +49,16 @@ class player:
                 return
         self.lives = self.lives + 1
 
+def generateLetters():
+    rword = r.get_random_word()
+    while(rword is None or len(rword) <= 1 or rword.isalpha() == False):
+        rword = r.get_random_word()
+    idx = random.randint(0, len(rword)-1)
+    return str(rword[idx] + rword[idx+1])
+
 
 
 tmp = player("Jeffrey")
 tmp.useWord("abcdefghijklmnopqrstuvwxyz")
 tmp.checkAllLetters()
-
+print(generateLetters())
