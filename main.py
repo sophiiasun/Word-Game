@@ -20,7 +20,7 @@ from random_word import RandomWords
 
 d = enchant.Dict("en_US")
 r = RandomWords()
-print(r)
+print(r.get_random_word())
 class player:
     def __init__(self, name):
         self.lives = 3
@@ -50,9 +50,7 @@ class player:
 
 
 
-
 tmp = player("Jeffrey")
 tmp.useWord("abcdefghijklmnopqrstuvwxyz")
 tmp.checkAllLetters()
-print(tmp.lives)
 
