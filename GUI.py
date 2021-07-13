@@ -43,6 +43,42 @@ def displayIcons():
     return img3
 
 # ========================================================== GUI INTERFACE ==========================================================
+tmp = player("Thomas")
+endTime = time.time() + tmp.inc
+# submitWord:
+def submitWord(*args):
+    char = letterLabel['text']
+    word = inputBox.get()
+    inputBox.delete(0, END)
+    if(tmp.wordExist(char, word) == False):
+        return
+    global endTime
+    endTime = time.time() + tmp.inc
+    tmp.useWord(word)
+    nxt = generateLetters()
+    while(nxt == letterLabel['text']):
+        nxt = generateLetters()
+    letterLabel.config(text = nxt.lower())
+    scoreLabel.config(text = tmp.score)
+
+
+def timer():
+    global endTime
+    timeLabel.config(text = str(round(endTime - time.time(), 2)))
+    if(endTime <= time.time()):
+        endTime = time.time() + tmp.inc
+        tmp.lives-=1
+        nxt = generateLetters()
+        while (nxt == letterLabel['text']):
+            nxt = generateLetters()
+        letterLabel.config(text = nxt.lower())
+
+# lives donn't work in displaying?? nani
+
+        # newLives = displayLives(tmp.lives)
+        # livesLabel.config(image = newLives)
+
+    timeLabel.after(50, timer)
 
 titleLabel = Label(window, width=10, text="Wurd Game", font="Courier 80 bold", bg="seashell")
 img = displayLives(3)
@@ -59,9 +95,4 @@ iconLabel.grid(row=5, column=1, padx=(0, 10), pady=(0, 10))
 
 
 window.mainloop()
-
-"A prompt will appear on your screen. \
-Think of a word with those letters (consecutively) in them and \ntype it in the text box on your side of the screen before \
-the timer runs out! Each player gets three lives. \n Win by being the only player remaining or by using all the letters\
-on the left. Have fun!"
 

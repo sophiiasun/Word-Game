@@ -33,7 +33,6 @@ class player:
         self.inc = 10
 
     def wordExist(self, letters, word):
-        print(letters + " " + word)
         if letters in word:
             if (word in self.used) == False:
                 return d.check(word)
