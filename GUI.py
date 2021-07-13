@@ -7,9 +7,6 @@ import base64
 import urllib
 import urllib.request
 import os
-from main import player
-from main import generateLetters
-from time import strftime
 
 window = Tk()
 window.resizable(0, 0)
@@ -87,29 +84,15 @@ titleLabel = Label(window, width=10, text="Wurd Game", font="Courier 80 bold", b
 img = displayLives(3)
 livesLabel = Label(window, width=180, image=img, bg="SlateGray1", anchor="center", height = 30)
 img2 = displayIcons()
-iconLabel = Label(window, width=180, height = 180, image=img2, bg="SlateGray2", anchor="center")
-letterLabel = Label(window, width=10, text=generateLetters(), font = "Courier 20 bold", bg="SlateGray2")
-scoreLabel = Label(window, width=10, text=0, font = "Courier 20 bold", bg="SlateGray2")
-inputBox = Entry(window, width = 10, text = "input your text here")
-timeLabel = Label(window, width=10, text=0, font = "Courier 20 bold", bg="SlateGray2")
-
-inputBox.bind('<Return>', submitWord)
+iconLabel = Label(window, width=180, height = 0, image=img2, bg="SlateGray2", anchor="center")
 
 titleLabel.grid(row=1, column=1, padx=(0, 10), pady=(0, 10))
 livesLabel.grid(row=4, column=1, padx=(0, 10), pady=(0, 10))
 iconLabel.grid(row=5, column=1, padx=(0, 10), pady=(0, 10))
-letterLabel.grid(row=6, column=1, padx=(0, 10), pady=(0, 10))
-inputBox.grid(row=7, column=1, padx=(0, 10), pady=(0, 10))
-scoreLabel.grid(row=9, column=1, padx=(0, 10), pady=(0, 10))
-timeLabel.grid(row=10, column=1, padx=(0, 10), pady=(0, 10))
 
-timer()
+
+
+
 
 window.mainloop()
-
-
-"A prompt will appear on your screen. \
-Think of a word with those letters (consecutively) in them and \ntype it in the text box on your side of the screen before \
-the timer runs out! Each player gets three lives. \n Win by being the only player remaining or by using all the letters\
-on the left. Have fun!"
 
