@@ -14,7 +14,8 @@
 # if player has no life they cannot do anything
 # if all other players have no life you win
 # if all players fail a prompt, the prompt changes
-
+import time
+from threading import Thread
 import enchant
 import random
 from random_word import RandomWords
@@ -28,9 +29,11 @@ class player:
         self.name = name
         self.letters = [0] * 26
         self.used = []
+        self.score = 0
+        self.inc = 10
 
     def wordExist(self, letters, word):
-        word = word.lower()
+        print(letters + " " + word)
         if letters in word:
             if (word in self.used) == False:
                 return d.check(word)
@@ -40,25 +43,25 @@ class player:
     def useWord(self, word):
         word = word.lower()
         self.used.append(word)
+        self.score += 1
+        if(self.inc>=3.2):
+            self.inc-=0.2
         for character in range(0, len(word)):
             self.letters[ord(word[character]) - 97] = 1
+        self.checkAllLetters()
+
 
     def checkAllLetters(self):
         for idx in range(0, 24):
             if self.letters[idx] == 0:
                 return
+        for idx in range(0, 24):
+            self.letters[idx] = 0
         self.lives = self.lives + 1
 
 def generateLetters():
     rword = r.get_random_word()
     while(rword is None or len(rword) <= 1 or rword.isalpha() == False):
         rword = r.get_random_word()
-    idx = random.randint(0, len(rword)-1)
+    idx = random.randint(0, len(rword)-2)
     return str(rword[idx] + rword[idx+1])
-
-
-
-tmp = player("Jeffrey")
-tmp.useWord("abcdefghijklmnopqrstuvwxyz")
-tmp.checkAllLetters()
-print(generateLetters())
