@@ -22,6 +22,9 @@ ICONS_URL = ["https://i.ibb.co/pPRbw8q/OinkOink.png", "https://i.ibb.co/ggg6g8C/
              "https://i.ibb.co/tHMckNz/BakBak.png", "https://i.ibb.co/G5hkRNz/chicken.png"]
 ICONS_PNG = ["pig.png", "cow.png", "bee.png", "chicken.png", "dog.png"]
 
+tmp = player("Thomas")
+endTime = time.time() + tmp.inc
+
 # ============================================================= METHODS =============================================================
 
 def requestURLs():
@@ -45,12 +48,7 @@ def displayIcons():
     img3 = ImageTk.PhotoImage(img2)
     return img3
 
-# ========================================================== GUI INTERFACE ==========================================================
-tmp = player("Thomas")
-endTime = time.time() + tmp.inc
-# submitWord:
 def submitWord(*args):
-    print("hi")
     char = letterLabel['text']
     word = inputBox.get()
     inputBox.delete(0, END)
@@ -64,7 +62,6 @@ def submitWord(*args):
         nxt = generateLetters()
     letterLabel.config(text = nxt.lower())
     scoreLabel.config(text = tmp.score)
-
 
 def timer():
     global endTime
@@ -83,6 +80,9 @@ def timer():
         # livesLabel.config(image = newLives)
 
     timeLabel.after(50, timer)
+
+# ========================================================== GUI INTERFACE ==========================================================
+
 
 titleLabel = Label(window, width=10, text="Wurd Game", font="Courier 80 bold", bg="seashell")
 img = displayLives(3)
