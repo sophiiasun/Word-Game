@@ -50,7 +50,6 @@ tmp = player("Thomas")
 endTime = time.time() + tmp.inc
 # submitWord:
 def submitWord(*args):
-    print("hi")
     char = letterLabel['text']
     word = inputBox.get()
     inputBox.delete(0, END)
