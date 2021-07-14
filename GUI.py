@@ -69,28 +69,37 @@ def timer():
     if(endTime <= time.time()):
         endTime = time.time() + tmp.inc
         tmp.lives-=1
+        newLives = displayLives(tmp.lives)
+        livesLabel.config(image=newLives)
+        livesLabel.image = newLives
         if (tmp.lives <= 0):
             endGame()
-        nxt = generateLetters()
+            return
+        
         while (nxt == letterLabel['text']):
             nxt = generateLetters()
         letterLabel.config(text = nxt.lower())
         print(tmp.lives)
-        newLives = displayLives(tmp.lives)
-        livesLabel.config(image=newLives)
-        livesLabel.image = newLives
+        nxt = generateLetters()
 
     timeLabel.after(50, timer)
 
 def endGame():
+    if tmp.score > tmp.highScore:
+        tmp.highScore = tmp.score
+    tmp.score = 0
+    inputBox["state"] = DISABLED
     timeLabel.config(text='0 s')
 
+def restart():
+    inputBox["state"] = NORMAL
     
 
 # ========================================================== GUI INTERFACE ==========================================================
 
 
 titleLabel = Label(window, width=10, text="Wurd Game", font="Courier 45 bold", bg="seashell")
+highScoreLabel = Label(window, width=21, text="High Score: NONE", font="Courier 21 bold", bg="SlateGray2")
 img = displayLives(3)
 livesLabel = Label(window, width=180, image=img, bg="SlateGray1", anchor="center", height = 30)
 img2 = displayIcons()
@@ -101,22 +110,23 @@ scoreLabel2 = Label(window, width=10, text="Score", font = "Courier 20 underline
 inputBox = Entry(window, width=21, text="input your text here", justify='center', font="Courier 20")
 timeLabel = Label(window, width=10, text=0, font="Courier 20 bold", bg="SlateGray2")
 timeLabel2 = Label(window, width=10, text="Timer", font="Courier 20 underline", bg="SlateGray2")
-restartButton = Button(window, width=11, text='Restart', font='Courier 19 bold', justify="center", bg="SlateGray2")
+restartButton = Button(window, width=11, text='Restart', font='Courier 19 bold', justify="center", bg="SlateGray2", command=lambda:restart())
 exitButton = Button(window, width=11, text="Exit", font="Courier 19 bold", justify="center", bg="SlateGray2", command=lambda:window.destroy())
 
 inputBox.bind('<Return>', submitWord)
 
 titleLabel.grid(row=1, column=1, columnspan=2, pady=(0, 10))
-livesLabel.grid(row=2, column=1, columnspan=2)
-iconLabel.grid(row=3, column=1, columnspan=2, pady=(0, 10))
-letterLabel.grid(row=4, column=1, columnspan=2, pady=(0, 10))
-inputBox.grid(row=5, column=1, columnspan=2, pady=(0, 10))
-scoreLabel2.grid(row=6, column=1, pady=(0, 10))
-timeLabel2.grid(row=6, column=2, pady=(0, 10))
-scoreLabel.grid(row=7, column=1, pady=(0, 10))
-timeLabel.grid(row=7, column=2, pady=(0, 10))
-restartButton.grid(row=8, column=1, padx=(0, 0))
-exitButton.grid(row=8, column=2)
+highScoreLabel.grid(row=2, column=1, columnspan=2, pady=(0, 10))
+livesLabel.grid(row=3, column=1, columnspan=2)
+iconLabel.grid(row=4, column=1, columnspan=2, pady=(0, 10))
+letterLabel.grid(row=5, column=1, columnspan=2, pady=(0, 10))
+inputBox.grid(row=6, column=1, columnspan=2, pady=(0, 10))
+scoreLabel2.grid(row=7, column=1, pady=(0, 10))
+timeLabel2.grid(row=7, column=2, pady=(0, 10))
+scoreLabel.grid(row=8, column=1, pady=(0, 10))
+timeLabel.grid(row=8, column=2, pady=(0, 10))
+restartButton.grid(row=9, column=1, padx=(0, 0))
+exitButton.grid(row=9, column=2)
 
 timer()
 

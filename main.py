@@ -31,6 +31,7 @@ class player:
         self.used = []
         self.score = 0
         self.inc = 10
+        self.highScore = 0
 
     def wordExist(self, letters, word):
         if letters in word:
