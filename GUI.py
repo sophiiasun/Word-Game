@@ -66,22 +66,20 @@ def submitWord(*args):
 def timer():
     global endTime
     timeLabel.config(text = str(round(endTime - time.time(), 2)) + " s")
-    if(endTime <= time.time()):
+    if(endTime <= time.time() + 0.05):
         endTime = time.time() + tmp.inc
         tmp.lives-=1
         newLives = displayLives(tmp.lives)
         livesLabel.config(image=newLives)
+        timeLabel.config(text = "0.00")
         livesLabel.image = newLives
         if (tmp.lives <= 0):
             endGame()
             return
-        
+        nxt = generateLetters()
         while (nxt == letterLabel['text']):
             nxt = generateLetters()
         letterLabel.config(text = nxt.lower())
-        print(tmp.lives)
-        nxt = generateLetters()
-
     timeLabel.after(50, timer)
 
 def endGame():
@@ -89,11 +87,21 @@ def endGame():
         tmp.highScore = tmp.score
     tmp.score = 0
     inputBox["state"] = DISABLED
+    restartButton["state"] = NORMAL
+    highScoreLabel.config(text = "High Score: " + str(tmp.highScore))
     timeLabel.config(text='0 s')
 
 def restart():
     inputBox["state"] = NORMAL
-    
+    restartButton["state"] = DISABLED
+    global tmp, endtime
+    tmp = player("Thomas")
+    endTime = time.time() + tmp.inc
+    scoreLabel.config(text = 0)
+    livesLabel.config( image  = displayLives(3) )
+    timer()
+
+
 
 # ========================================================== GUI INTERFACE ==========================================================
 
@@ -110,7 +118,7 @@ scoreLabel2 = Label(window, width=10, text="Score", font = "Courier 20 underline
 inputBox = Entry(window, width=21, text="input your text here", justify='center', font="Courier 20")
 timeLabel = Label(window, width=10, text=0, font="Courier 20 bold", bg="SlateGray2")
 timeLabel2 = Label(window, width=10, text="Timer", font="Courier 20 underline", bg="SlateGray2")
-restartButton = Button(window, width=11, text='Restart', font='Courier 19 bold', justify="center", bg="SlateGray2", command=lambda:restart())
+restartButton = Button(window, width=11, text='Restart', font='Courier 19 bold', justify="center", bg="SlateGray2", state = DISABLED, command=lambda:restart())
 exitButton = Button(window, width=11, text="Exit", font="Courier 19 bold", justify="center", bg="SlateGray2", command=lambda:window.destroy())
 
 inputBox.bind('<Return>', submitWord)
