@@ -27,7 +27,7 @@ class player:
     def __init__(self, name):
         self.lives = 3
         self.name = name
-        self.letters = [0] * 26
+        self.letters = [False] * 26
         self.used = []
         self.score = 0
         self.inc = 10
@@ -47,16 +47,16 @@ class player:
         if(self.inc>=3.2):
             self.inc-=0.2
         for character in range(0, len(word)):
-            self.letters[ord(word[character]) - 97] = 1
+            self.letters[ord(word[character]) - 97] = True
         self.checkAllLetters()
 
 
     def checkAllLetters(self):
-        for idx in range(0, 24):
-            if self.letters[idx] == 0:
+        for idx in range(0, 26):
+            if self.letters[idx] == True:
                 return
-        for idx in range(0, 24):
-            self.letters[idx] = 0
+        for idx in range(0, 26):
+            self.letters[idx] = False
         self.lives = self.lives + 1
 
 def generateLetters():
