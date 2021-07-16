@@ -50,7 +50,6 @@ class player:
             self.letters[ord(word[character]) - 97] = True
         self.checkAllLetters()
 
-
     def checkAllLetters(self):
         for idx in range(0, 26):
             if self.letters[idx] == True:
@@ -65,3 +64,10 @@ def generateLetters():
         rword = r.get_random_word()
     idx = random.randint(0, len(rword)-2)
     return str(rword[idx] + rword[idx+1])
+
+def drawBoxes(canvas):
+    for x in range(25, 525, 75):
+        drawRect(canvas, x, 25)
+
+def drawRect(canvas, x, y):
+    canvas.create_rectangle(x, y, x+50, y+50, fill="SlateGrey1")
