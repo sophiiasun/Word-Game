@@ -49,8 +49,7 @@ def displayIcons():
 
 def displayLetterBoxes():
     LetterBoxes.drawBoxes(lettersCanvas)
-displayLetterBoxes()
-
+    
 def submitWord(*args):
     char = promptLabel['text']
     word = inputBox.get()
@@ -142,5 +141,6 @@ lettersCanvas.grid(row=1, column=3, rowspan=9, padx=(10, 0))
 
 timer()
 tmp2 = LetterBoxes(lettersCanvas)
+displayLetterBoxes()
 
 window.mainloop()

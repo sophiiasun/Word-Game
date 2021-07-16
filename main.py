@@ -65,9 +65,13 @@ def generateLetters():
     idx = random.randint(0, len(rword)-2)
     return str(rword[idx] + rword[idx+1])
 
-def drawBoxes(canvas):
-    for x in range(25, 525, 75):
-        drawRect(canvas, x, 25)
+class LetterBoxes:
+    def __init__(self, canvas):
+        self.cvs = canvas
 
-def drawRect(canvas, x, y):
-    canvas.create_rectangle(x, y, x+50, y+50, fill="SlateGrey1")
+    def drawBoxes(self):
+        for x in range(25, 525, 75):
+            self.cvs.create_rectangle(x, 25, x+50, 75, fill="SlateGrey1")
+
+    def drawRect(self, x, y):
+        self.canvas.create_rectangle(x, y, x+50, y+50, fill="SlateGrey1")
