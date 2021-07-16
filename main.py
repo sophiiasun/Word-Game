@@ -19,6 +19,7 @@ from threading import Thread
 import enchant
 import random
 from random_word import RandomWords
+from tkinter import *
 
 d = enchant.Dict("en_US")
 r = RandomWords()
@@ -68,10 +69,9 @@ def generateLetters():
 class LetterBoxes:
     def __init__(self, canvas):
         self.cvs = canvas
-
     def drawBoxes(self):
         for x in range(25, 525, 75):
-            self.cvs.create_rectangle(x, 25, x+50, 75, fill="SlateGrey1")
+            self.create_rectangle(x, 25, x+50, 75)
 
     def drawRect(self, x, y):
-        self.canvas.create_rectangle(x, y, x+50, y+50, fill="SlateGrey1")
+        self.create_rectangle(x, y, x+50, y+50)

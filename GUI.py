@@ -48,7 +48,7 @@ def displayIcons():
     return img3
 
 def displayLetterBoxes():
-    LetterBoxes.drawBoxes(lettersCanvas)
+        LetterBoxes.drawBoxes(lettersCanvas)
     
 def submitWord(*args):
     char = promptLabel['text']
@@ -138,6 +138,7 @@ timeLabel.grid(row=8, column=2, pady=(0, 10))
 restartButton.grid(row=9, column=1, padx=(0, 0))
 exitButton.grid(row=9, column=2)
 lettersCanvas.grid(row=1, column=3, rowspan=9, padx=(10, 0))
+
 
 timer()
 tmp2 = LetterBoxes(lettersCanvas)
