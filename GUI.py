@@ -79,7 +79,7 @@ def timer():
             endGame()
             return
         nxt = generateLetters()
-        while (nxt == promptLabel['text'] or nxt.isalpha()==True):
+        while (nxt == promptLabel['text'] or nxt.isalpha()==False):
             nxt = generateLetters()
         promptLabel.config(text = nxt.lower())
     timeLabel.after(50, timer)
