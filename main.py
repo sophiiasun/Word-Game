@@ -48,13 +48,15 @@ class player:
         self.score += 1
         if(self.inc>=3.2):
             self.inc-=0.2
+        if(word.isalpha()==False):
+            return
         for character in range(0, len(word)):
             self.letters[ord(word[character]) - 97] = True
         self.checkAllLetters()
 
     def checkAllLetters(self):
         for idx in range(0, 26):
-            if self.letters[idx] == True:
+            if self.letters[idx] == False:
                 return
         for idx in range(0, 26):
             self.letters[idx] = False

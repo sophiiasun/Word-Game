@@ -61,6 +61,8 @@ def submitWord(*args):
     tmp.useWord(word)
     displayLetterBoxes()
     nxt = generateLetters()
+    newLives = displayLives(tmp.lives)
+    livesLabel.config(image=newLives)
     while(nxt == promptLabel['text']):
         nxt = generateLetters()
     promptLabel.config(text = nxt.lower())
@@ -75,7 +77,6 @@ def timer():
         tmp.lives-=1
         newLives = displayLives(tmp.lives)
         livesLabel.config(image=newLives)
-        timeLabel.config(text = "0.00")
         livesLabel.image = newLives
         if (tmp.lives <= 0):
             endGame()
@@ -141,6 +142,8 @@ restartButton.grid(row=9, column=1, padx=(0, 0))
 exitButton.grid(row=9, column=2)
 tmp2.cvs.grid(row=1, column=3, rowspan=9, padx=(10, 0))
 
+for i in range(0, 25):
+    tmp.letters[i] = True
 
 timer()
 displayLetterBoxes()
