@@ -48,7 +48,7 @@ def displayIcons():
     return img3
 
 def displayLetterBoxes():
-        tmp2.drawBoxes(tmp.letters)
+    tmp2.drawBoxes()
     
 def submitWord(*args):
     char = promptLabel['text']
@@ -66,8 +66,9 @@ def submitWord(*args):
     while(nxt == promptLabel['text']):
         nxt = generateLetters()
     promptLabel.config(text = nxt.lower())
+    promptLabel.text = nxt.lower()
     scoreLabel.config(text = tmp.score)
-
+    scoreLabel.text = tmp.score
 
 def timer():
     global endTime
@@ -88,7 +89,7 @@ def timer():
     timeLabel.after(50, timer)
 
 def endGame():
-    if tmp.score > tmp.highScore:
+    if tmp.score > tmp.highScore and not (tmp.highScore == 'NONE'):
         tmp.highScore = tmp.score
     tmp.score = 0
     inputBox["state"] = DISABLED
@@ -103,11 +104,14 @@ def restart():
     tmp = player("Thomas")
     endTime = time.time() + tmp.inc
     scoreLabel.config(text = 0)
-    livesLabel.config( image  = displayLives(3) )
+    img = displayLives(3)
+    livesLabel.config(image=img)
+    livesLabel.image = img
     timer()
 
 # ========================================================== GUI INTERFACE ==========================================================
 
+oPrompt = StringVar()
 
 titleLabel = Label(window, width=10, text="Wurd Game", font="Courier 45 bold", bg="seashell")
 highScoreLabel = Label(window, width=21, text="High Score: NONE", font="Courier 21 bold", bg="SlateGray2")

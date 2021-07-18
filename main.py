@@ -51,7 +51,7 @@ class player:
         if(word.isalpha()==False):
             return
         for character in range(0, len(word)):
-            self.letters[ord(word[character]) - 97] = True
+            self.letters[ord(word[character]) - 'a'] = True
         self.checkAllLetters()
 
     def checkAllLetters(self):
@@ -72,6 +72,7 @@ def generateLetters():
 class LetterBoxes:
     def __init__(self, window):
         self.cvs = Canvas(window, width=70, height=550, bg="SlateGray2")
+        self.pos = [[0, 0]] * 26
 
     def drawRect(self, x, y, colour):
         self.cvs.create_rectangle(x, y, x + 25, y + 25, fill=colour)
@@ -79,21 +80,20 @@ class LetterBoxes:
     def drawText(self, x, y, txt):
         self.cvs.create_text(x, y, text=txt, font="Courier 21")
 
-    def drawBoxes(self, usedLetters):
+    def drawBoxes(self):
         counter = 0
         for y in range(10, 540, 30):
-            if(usedLetters[counter]==True):
-                self.drawRect(10, y, "SlateGray2")
-            else:
-                self.drawRect(10, y, "SlateGray3")
+            self.drawRect(10, y, "SlateGray1")
             self.drawText(22, y+12, LETTERS[counter])
+            self.pos[counter] = [10, y]
             counter += 1
         for y in range(10, 250, 30):
-            if(usedLetters[counter]==True):
-                self.drawRect(40, y, "SlateGray2")
-            else:
-                self.drawRect(40, y, "SlateGray3")
+            self.drawRect(40, y, "SlateGray1")
             self.drawText(52, y+12, LETTERS[counter])
+            self.pos[counter] = [40, y]
             counter += 1
+
+    def drawUsed(self, letter):
+        self.drawRect()
 
 
