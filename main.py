@@ -67,12 +67,12 @@ def generateLetters():
     return str(rword[idx] + rword[idx+1])
 
 class LetterBoxes:
-    def __init__(self, canvas):
-        self.canvas = canvas
+    def __init__(self, window):
+        self.cvs = Canvas(window, width=100, height=550, bg="SlateGray2")
+
+    def drawRect(self, x, y):
+        self.cvs.create_rectangle(x, y, x + 50, y + 50, fill = "SlateGray2")
 
     def drawBoxes(self):
         for x in range(25, 525, 75):
             self.drawRect(x, 25)
-
-    def drawRect(self, x, y):
-        self.canvas.create_rectangle(x, y, x+50, y+50, fill="SlateGrey1")

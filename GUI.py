@@ -48,7 +48,7 @@ def displayIcons():
     return img3
 
 def displayLetterBoxes():
-        LetterBoxes.drawBoxes(lettersCanvas)
+        tmp2.drawBoxes()
     
 def submitWord(*args):
     char = promptLabel['text']
@@ -79,7 +79,7 @@ def timer():
             endGame()
             return
         nxt = generateLetters()
-        while (nxt == promptLabel['text']):
+        while (nxt == promptLabel['text'] or nxt.isalpha()==True):
             nxt = generateLetters()
         promptLabel.config(text = nxt.lower())
     timeLabel.after(50, timer)
@@ -121,9 +121,9 @@ timeLabel2 = Label(window, width=10, text="Timer", font="Courier 20 underline", 
 restartButton = Button(window, width=11, text='Restart', font='Courier 19 bold', justify="center", bg="SlateGray2", state = DISABLED, command=lambda:restart())
 exitButton = Button(window, width=11, text="Exit", font="Courier 19 bold", justify="center", bg="SlateGray2", command=lambda:window.destroy())
 
-lettersCanvas = Canvas(window, width=100, height=550, bg="SlateGray2")
-
 inputBox.bind('<Return>', submitWord)
+
+tmp2 = LetterBoxes(window)
 
 titleLabel.grid(row=1, column=1, columnspan=2, pady=(0, 10))
 highScoreLabel.grid(row=2, column=1, columnspan=2, pady=(0, 10))
@@ -137,11 +137,10 @@ scoreLabel.grid(row=8, column=1, pady=(0, 10))
 timeLabel.grid(row=8, column=2, pady=(0, 10))
 restartButton.grid(row=9, column=1, padx=(0, 0))
 exitButton.grid(row=9, column=2)
-lettersCanvas.grid(row=1, column=3, rowspan=9, padx=(10, 0))
+tmp2.cvs.grid(row=1, column=3, rowspan=9, padx=(10, 0))
 
 
 timer()
-tmp2 = LetterBoxes(lettersCanvas)
 displayLetterBoxes()
 
 window.mainloop()
