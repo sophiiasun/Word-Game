@@ -23,6 +23,7 @@ from tkinter import *
 
 d = enchant.Dict("en_US")
 r = RandomWords()
+LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 class player:
     def __init__(self, name):
@@ -68,11 +69,22 @@ def generateLetters():
 
 class LetterBoxes:
     def __init__(self, window):
-        self.cvs = Canvas(window, width=100, height=550, bg="SlateGray2")
+        self.cvs = Canvas(window, width=70, height=550, bg="SlateGray2")
 
     def drawRect(self, x, y):
-        self.cvs.create_rectangle(x, y, x + 25, y + 25, fill = "SlateGray2")
+        self.cvs.create_rectangle(x, y, x + 25, y + 25, fill="SlateGray1")
+
+    def drawText(self, x, y, txt):
+        self.cvs.create_text(x, y, text=txt, font="Courier 21")
 
     def drawBoxes(self):
+        counter = 0
         for y in range(10, 540, 30):
             self.drawRect(10, y)
+            self.drawText(22, y+12, LETTERS[counter])
+            counter += 1
+        for y in range(10, 190, 30):
+            self.drawRect(40, y)
+            self.drawText(52, y+12, LETTERS[counter])
+            counter += 1
+
