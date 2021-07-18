@@ -83,7 +83,7 @@ class LetterBoxes:
             self.drawRect(10, y)
             self.drawText(22, y+12, LETTERS[counter])
             counter += 1
-        for y in range(10, 190, 30):
+        for y in range(10, 250, 30):
             self.drawRect(40, y)
             self.drawText(52, y+12, LETTERS[counter])
             counter += 1
