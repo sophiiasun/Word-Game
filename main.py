@@ -71,8 +71,8 @@ class LetterBoxes:
         self.cvs = Canvas(window, width=100, height=550, bg="SlateGray2")
 
     def drawRect(self, x, y):
-        self.cvs.create_rectangle(x, y, x + 50, y + 50, fill = "SlateGray2")
+        self.cvs.create_rectangle(x, y, x + 25, y + 25, fill = "SlateGray2")
 
     def drawBoxes(self):
-        for x in range(25, 525, 75):
-            self.drawRect(x, 25)
+        for y in range(10, 540, 30):
+            self.drawRect(10, y)
