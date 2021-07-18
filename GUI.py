@@ -48,7 +48,7 @@ def displayIcons():
     return img3
 
 def displayLetterBoxes():
-        tmp2.drawBoxes()
+        tmp2.drawBoxes(tmp.letters)
     
 def submitWord(*args):
     char = promptLabel['text']
@@ -59,11 +59,13 @@ def submitWord(*args):
     global endTime
     endTime = time.time() + tmp.inc
     tmp.useWord(word)
+    displayLetterBoxes()
     nxt = generateLetters()
     while(nxt == promptLabel['text']):
         nxt = generateLetters()
     promptLabel.config(text = nxt.lower())
     scoreLabel.config(text = tmp.score)
+
 
 def timer():
     global endTime
