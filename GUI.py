@@ -59,10 +59,17 @@ def submitWord(*args):
     global endTime
     endTime = time.time() + tmp.inc
     tmp.useWord(word)
-    displayLetterBoxes()
+    for i in range (0, len(word)):
+        tmp2.drawUsed(word[i])
     nxt = generateLetters()
-    newLives = displayLives(tmp.lives)
-    livesLabel.config(image=newLives)
+    if(tmp.checkAllLetters()==True):
+        if(tmp.lives<3):
+            tmp.lives+=1
+        for idx in range(0, 26):
+            tmp.letters[idx] = False
+        displayLetterBoxes()
+        newLives = displayLives(tmp.lives)
+        livesLabel.config(image=newLives)
     while(nxt == promptLabel['text']):
         nxt = generateLetters()
     promptLabel.config(text = nxt.lower())
@@ -83,9 +90,9 @@ def timer():
             endGame()
             return
         nxt = generateLetters()
-        while (nxt == promptLabel['text'] or nxt.isalpha()==False):
+        while (nxt == promptLabel['text'] or nxt.isalpha()==False or nxt.islower()==False):
             nxt = generateLetters()
-        promptLabel.config(text = nxt.lower())
+        promptLabel.config(text = nxt)
     timeLabel.after(50, timer)
 
 def endGame():
@@ -107,6 +114,7 @@ def restart():
     img = displayLives(3)
     livesLabel.config(image=img)
     livesLabel.image = img
+    displayLetterBoxes()
     timer()
 
 # ========================================================== GUI INTERFACE ==========================================================
@@ -145,11 +153,6 @@ timeLabel.grid(row=8, column=2, pady=(0, 10))
 restartButton.grid(row=9, column=1, padx=(0, 0))
 exitButton.grid(row=9, column=2)
 tmp2.cvs.grid(row=1, column=3, rowspan=9, padx=(10, 0))
-
-for i in range(0, 25):
-    tmp.letters[i] = True
-
 timer()
 displayLetterBoxes()
-
 window.mainloop()
