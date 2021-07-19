@@ -23,13 +23,13 @@ from tkinter import *
 
 d = enchant.Dict("en_US")
 r = RandomWords()
-LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w"]
 
 class player:
     def __init__(self, name):
         self.lives = 3
         self.name = name
-        self.letters = [False] * 26
+        self.letters = [False] * 23
         self.used = []
         self.score = 0
         self.inc = 10
@@ -50,12 +50,13 @@ class player:
             self.inc-=0.2
         if(word.isalpha()==False):
             return
-        for character in range(0, len(word)):
-            self.letters[ord(word[character]) - 97] = True
+        for character in word:
+            if not (character == 'z' or character == 'y' or character == 'x'):
+                self.letters[ord(character) - 97] = True
         self.checkAllLetters()
 
     def checkAllLetters(self):
-        for idx in range(0, 26):
+        for idx in range(0, 23):
             if self.letters[idx] == False:
                 return False
         return True
@@ -85,21 +86,15 @@ class LetterBoxes:
             self.drawText(22, y+12, LETTERS[counter])
             self.pos[counter] = [10, y]
             counter += 1
-        for y in range(10, 250, 30):
+        for y in range(10, 160, 30):
             self.drawRect(40, y, "SlateGray1")
             self.drawText(52, y+12, LETTERS[counter])
             self.pos[counter] = [40, y]
             counter += 1
 
     def drawUsed(self, letter):
-        if(ord(letter)<115):
-            y = (ord(letter) - 97)*30 + 10
-            self.drawRect(10, y, "SlateGray3")
-            self.drawText(22, y+12, letter)
-        else:
-            y = (ord(letter) - 115) * 30 + 10
-            self.drawRect(40, y, "SlateGray3")
-            self.drawText(52, y+12, letter)
-
+        p = self.pos[ord(letter) - ord('a')]
+        self.drawRect(p[0], p[1], "SlateGray3")
+        self.drawText(p[0]+12, p[1]+12, letter)
 
 

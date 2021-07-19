@@ -59,8 +59,9 @@ def submitWord(*args):
     global endTime
     endTime = time.time() + tmp.inc
     tmp.useWord(word)
-    for i in range (0, len(word)):
-        tmp2.drawUsed(word[i])
+    for char in word:
+        if not(char == 'x' or char == 'y' or char == 'z'):
+            tmp2.drawUsed(char)
     nxt = generateLetters()
     if(tmp.checkAllLetters()==True):
         if(tmp.lives<3):
