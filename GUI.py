@@ -22,8 +22,8 @@ ICONS_URL = ["https://i.ibb.co/NtdyHdm/OinkOink.png", "https://i.ibb.co/fD03XyB/
 ICONS_PNG = ["pig.png", "cow.png", "bee.png", "chicken.png", "dog.png"]
 
 tmp = player("Thomas")
-endTime = time.time() + tmp.inc
 
+endTime = time.time()
 # ============================================================= METHODS =============================================================
 
 def requestURLs():
@@ -108,14 +108,19 @@ def endGame():
 def restart():
     inputBox["state"] = NORMAL
     restartButton["state"] = DISABLED
-    global tmp, endtime
+    global tmp
     tmp = player("Thomas")
-    endTime = time.time() + tmp.inc
     scoreLabel.config(text = 0)
     img = displayLives(3)
     livesLabel.config(image=img)
     livesLabel.image = img
     displayLetterBoxes()
+    nxt = generateLetters()
+    while (nxt == promptLabel['text'] or nxt.isalpha() == False or nxt.islower() == False):
+        nxt = generateLetters()
+    global endTime
+    endTime = time.time() + tmp.inc
+    promptLabel.config(text=nxt)
     timer()
 
 # ========================================================== GUI INTERFACE ==========================================================
@@ -154,6 +159,7 @@ timeLabel.grid(row=8, column=2, pady=(0, 10))
 restartButton.grid(row=9, column=1, padx=(0, 0))
 exitButton.grid(row=9, column=2)
 tmp2.cvs.grid(row=1, column=3, rowspan=9, padx=(10, 0))
-timer()
 displayLetterBoxes()
+endTime = time.time() + tmp.inc
+timer()
 window.mainloop()
